@@ -65,5 +65,24 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FBelugaNameTest, "Beluga.Name", EAutomationTest
 
 bool FBelugaNameTest::RunTest(const FString& Parameters)
 {
+	{
+		FName name1 = FName(TEXT("Sungmin"));
+		FName name2 = FName(TEXT("Sungmin"));
+
+		TestTrue("Name not equal", name1 == name2);
+		TestTrue("Name not equal", name1.Compare(name2) == 0);
+	}
+
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FBelugaTextTest, "Beluga.Text", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+
+bool FBelugaTextTest::RunTest(const FString& Parameters)
+{
+	{
+		
+	}
+
 	return true;
 }
