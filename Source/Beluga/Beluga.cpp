@@ -6,7 +6,6 @@ class FBelugaModule : public FDefaultGameModuleImpl
 public:
 	virtual void StartupModule() override
 	{
-		FString star("Apple");
 		UE_LOG(LogBeluga, Display, TEXT("BelugaModule::StartupModule"));
 	}
 	virtual void ShutdownModule() override
