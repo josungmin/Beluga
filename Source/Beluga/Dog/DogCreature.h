@@ -4,21 +4,37 @@
 #include "UObject/NoExportTypes.h"
 #include "DogCreature.generated.h"
 
-UCLASS(Abstract)
+UCLASS(Blueprintable, BlueprintType)//, Abstract)
 class BELUGA_API UDogCreature : public UObject
 {
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "Creature")
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Default")
 	FName Name;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Creature")
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Default")
 	int32 MaxHP;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Creature")
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Default", Transient)
 	int32 CurrentHP;
 
-	UFUNCTION()
+public:
+	UFUNCTION(BlueprintCallable)
 	virtual void Init();
+
+	UFUNCTION(BlueprintCallable)
+		FString CPP_Hello();
+
+	UFUNCTION(BlueprintPure)
+		FName CPP_GetName();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+		void BP_SetHelloMessage();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+		void BOTH_Update();
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		FString HelloMsg;
 };
